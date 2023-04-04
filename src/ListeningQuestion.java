@@ -1,12 +1,18 @@
 import java.util.Random;
 
 public class ListeningQuestion extends Question{
-
+	
 	public ListeningQuestion() {
-		//super(7, (Object[]);
-		int[] listeningContent = new int[2];
+		super();
+		this.setPoint(7);
+		
+		Object[] listeningContent = new Object[2];
+		
 		listeningContent[0] = getRandomInt();
 		listeningContent[1] = getRandomInt();
+		System.out.println(listeningContent[0]);
+		setContent(listeningContent);
+		
 		//setCon
 	}
 	

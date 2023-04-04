@@ -3,7 +3,9 @@ public abstract class Question {
 	private int point;
 	private Object[] content;
 	
-	public Question() {}
+	public Question() {
+		
+	}
 	
 	public int getPoint() {
 		return point;

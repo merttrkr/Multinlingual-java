@@ -1,5 +1,5 @@
 import java.util.Random;
-public abstract class Language {
+public class Language {
 	private String name;
 	private Unit[] unitsArray;
 	private String[] leagueArray;
@@ -7,6 +7,7 @@ public abstract class Language {
 
     public Language(String name ) {// only name needed when generating this class.
     	this.name = name;
+    	createUnits();
         
     }
     public int getUnitNumber() {
@@ -39,7 +40,9 @@ public abstract class Language {
         this.unitNumber = numUnits;
         
         for(int i= 0; i < numUnits ; i ++) {
+        	System.out.println('1');
         	Unit unit = new Unit();
+        	
         	this.unitsArray[i] = unit;
         }
 

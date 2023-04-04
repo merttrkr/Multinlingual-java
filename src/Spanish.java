@@ -1,8 +1,8 @@
 
 public class Spanish extends Language{			
 	
-    public Spanish(String name, String[] unitsArray, String[] leagueArray) {
-        super(name, unitsArray, leagueArray);
+    public Spanish(String name) {
+        super(name);
     }
 
 	@Override

@@ -1,4 +1,6 @@
 
-public class ReadingQuestion {
-
+public class ReadingQuestion extends Question{
+	public ReadingQuestion(){
+		
+	}
 }
