@@ -30,9 +30,10 @@ public class Quiz {
 	public Question generateRandomQuestion(int key) {
 		
 		if (key == 0) {
-			//System.out.println("q typ " + 0);
-			ListeningQuestion question = new ListeningQuestion();
-			 return question;
+			ReadingQuestion question = new ReadingQuestion();
+			String[] cont = (String[]) question.getContent();
+			System.out.println("content str " + cont[0] );
+			return question;
 		} 
 		else if( key == 1) {
 			//System.out.println("q typ " + 1);
