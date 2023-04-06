@@ -6,6 +6,9 @@ public class Unit {
 	
 
     public Unit( ) {// attributes randomly generated in this class.
+       Random rand = new Random();
+       quizNumber = rand.nextInt(10) + 1;
+       quizArray = new Quiz[quizNumber];
        createQuizzes();
     }
 	
@@ -19,11 +22,7 @@ public class Unit {
 	}
 
 	public void createQuizzes() {
-		Random rand = new Random();
-        int numQuizzes = rand.nextInt(10) + 1; // generates a random number between 60 and 100
-        this.quizNumber = numQuizzes;
-        
-        for(int i= 0; i < numQuizzes ; i ++) {
+        for(int i= 0; i < quizNumber ; i ++) {
         	Quiz quiz = new Quiz();
         	this.quizArray[i] = quiz;
         }

@@ -4,7 +4,10 @@ public class Quiz {
 	private Question[] questionsArray;
 	private int questionNumber;
 	
-	public Quiz( ) {// attributes randomly generated in this class.
+	public Quiz() {// attributes randomly generated in this class.
+		Random rand = new Random();
+		questionNumber= rand.nextInt(8) + 8; // generates a random number between 60 and 100
+		questionsArray = new Question[questionNumber];
 		createQuestions();
     }
 	public Question[] getQuestionsArray() {
@@ -17,32 +20,32 @@ public class Quiz {
 	
 	public void createQuestions() {
 		Random rand = new Random();
-		this.questionNumber= rand.nextInt(8) + 8; // generates a random number between 60 and 100
         for(int i= 0; i < questionNumber ; i ++) {
-        	this.questionsArray[i] = generateRandomQuestion(rand.nextInt(4));
-        	 
+        	Question question = generateRandomQuestion(rand.nextInt(4));
+        	System.out.println("the question obj " + question);
+        	questionsArray[i] = question ;    	 
         }
-        setQuestionsArray(questionsArray);
+
 	}
 	public Question generateRandomQuestion(int key) {
 		
 		if (key == 0) {
-			System.out.println(0);
+			//System.out.println("q typ " + 0);
 			ListeningQuestion question = new ListeningQuestion();
 			 return question;
 		} 
 		else if( key == 1) {
-			System.out.println(1);
+			//System.out.println("q typ " + 1);
 			 ListeningQuestion question = new ListeningQuestion();
 			 return question;
 		}
 		else if( key == 2) {
-			System.out.println(2);
+			//System.out.println("q typ " + 2);
 			ListeningQuestion question = new ListeningQuestion();
 			 return question;
 		}
 		else{
-			System.out.println(3);
+			//System.out.println("q typ " + 3);
 			ListeningQuestion question = new ListeningQuestion();
 			 return question;
 		}

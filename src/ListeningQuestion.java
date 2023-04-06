@@ -3,23 +3,16 @@ import java.util.Random;
 public class ListeningQuestion extends Question{
 	
 	public ListeningQuestion() {
-		super();
-		this.setPoint(7);
-		
-		Object[] listeningContent = new Object[2];
-		
-		listeningContent[0] = getRandomInt();
-		listeningContent[1] = getRandomInt();
-		System.out.println(listeningContent[0]);
-		setContent(listeningContent);
-		
-		//setCon
+		super(7, createListeningContent());
 	}
 	
-	public int getRandomInt() {
+	
+	public static Object createListeningContent() {
 	    Random rand = new Random();
-	    int num = rand.nextInt(300) + 1;
-	    return num;
+		int[] listeningContent = new int[2];
+		listeningContent[0] = rand.nextInt(300) + 1;
+		listeningContent[1] = rand.nextInt(300) + 1;
+		return listeningContent;
 	}
 		
 }
