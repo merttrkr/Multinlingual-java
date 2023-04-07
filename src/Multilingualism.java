@@ -1,4 +1,4 @@
-import java.util.*;
+
 public class Multilingualism {
     public static void main(String[] args) {
     	/*String csvFile = "users.csv";
@@ -14,8 +14,8 @@ public class Multilingualism {
         //System.out.println("units " + units[59]);
         //System.out.println("units " + units);
         for (int i = 0; i <spanish.getUnitNumber(); i++) {
-      	  System.out.println(i + ": " +  units[i]);
+      	  System.out.println(i + ": " +  units[i].getQuizArray()[0].getQuestionsArray()[3].getLanguageName());
       	}
-        System.out.println("point " + units[5].getQuizArray()[1].getQuestionsArray()[3].getPoint());
+        System.out.println("point " + units[5].getQuizArray()[0].getQuestionsArray()[3].getPoint());
     }	
 }

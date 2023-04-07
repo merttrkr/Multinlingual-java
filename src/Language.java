@@ -38,7 +38,7 @@ public class Language {
 	
 	public void createUnits() {       
         for(int i= 0; i < unitNumber ; i ++) {
-        	Unit unit = new Unit();
+        	Unit unit = new Unit(name);
         	unitsArray[i] = unit;
         }
 

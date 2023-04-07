@@ -1,16 +1,14 @@
-import java.util.Random;
 
 public class ListeningQuestion extends Question{
 	
-	public ListeningQuestion() {
-		super(7, createListeningContent());
+	public ListeningQuestion(String languageName) {
+		super(7, createListeningContent(languageName), languageName);
 	}
 	
-	public static Object createListeningContent() {
-	    Random rand = new Random();
-		int[] listeningContent = new int[2];
-		listeningContent[0] = rand.nextInt(300) + 1;
-		listeningContent[1] = rand.nextInt(300) + 1;
+	public static Object[] createListeningContent(String languageName) {
+		Object[] listeningContent = new Object[2];
+		listeningContent[0] = new StringContent(languageName);
+		listeningContent[1] = new AudioContent(languageName);
 		return listeningContent;
 	}		
 }
