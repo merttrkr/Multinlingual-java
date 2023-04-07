@@ -2,7 +2,7 @@
 public class User {
 	private String username;
     private String password;
-    private int unitsCompleted;
+    private int currentUnit;
     private String league;
     private int quizzesCompleted;
     private int streakNumber;
@@ -14,10 +14,10 @@ public class User {
     }
     
     // Constructor
-    public User(String username, String password, int unitsCompleted, String league, int quizzesCompleted, int streakNumber, int point, String languageChoice) {
+    public User(String username, String password, int currentUnit, String league, int quizzesCompleted, int streakNumber, int point, String languageChoice) {
         this.username = username;
         this.password = password;
-        this.unitsCompleted = unitsCompleted;
+        this.currentUnit = currentUnit;
         this.league = league;
         this.quizzesCompleted = quizzesCompleted;
         this.streakNumber = streakNumber;
@@ -33,12 +33,8 @@ public class User {
 		this.username = username;
 	}
 
-	public int getUnitsCompleted() {
-		return unitsCompleted;
-	}
-
-	public void setUnitsCompleted(int unitsCompleted) {
-		this.unitsCompleted = unitsCompleted;
+	public int getCurrentUnit() {
+		return currentUnit;
 	}
 
 	public String getLeague() {
