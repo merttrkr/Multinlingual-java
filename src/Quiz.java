@@ -30,7 +30,6 @@ public class Quiz {
 		Random rand = new Random();
         for(int i= 0; i < questionNumber ; i ++) {
         	Question question = generateRandomQuestion(rand.nextInt(4));
-        	System.out.println("the question obj " + question);
         	questionsArray[i] = question ;    	 
         }
 

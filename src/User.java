@@ -1,3 +1,4 @@
+import java.util.Random;
 
 public class User {
 	private String username;
@@ -10,19 +11,20 @@ public class User {
     private String languageChoice;
 
     public User(String username, String password) {
-        this(username, password, 0, "", 0, 0, 0, "");
+        this(username, password, 0, "", 0, 0);
     }
     
     // Constructor
-    public User(String username, String password, int currentUnit, String league, int quizzesCompleted, int streakNumber, int point, String languageChoice) {
-        this.username = username;
+    public User(String username, String password, int currentUnit, String league, int quizzesCompleted, int point) {
+    	Random rand = new Random();
+    	this.username = username;
         this.password = password;
         this.currentUnit = currentUnit;
         this.league = league;
         this.quizzesCompleted = quizzesCompleted;
-        this.streakNumber = streakNumber;
+        this.streakNumber = rand.nextInt(0, 365);
         this.point = point;
-        this.languageChoice = languageChoice;
+        this.languageChoice = generateRandomUserLanguageChoice();
     }
     
     public String getUsername() {
@@ -73,7 +75,11 @@ public class User {
 		return languageChoice;
 	}
 
-	public void setLanguageChoice(String languageChoice) {
-		this.languageChoice = languageChoice;
+	
+	public static String generateRandomUserLanguageChoice() {
+    	LanguageEnum[] languages = LanguageEnum.values();
+        Random rand = new Random();
+        int randomIndex = rand.nextInt(1, languages.length);
+        return languages[randomIndex].getName();
 	}
  }    
