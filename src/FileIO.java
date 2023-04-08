@@ -54,4 +54,38 @@ public class FileIO {
             e.printStackTrace();
         }	
 	}
+    public Map<String, Integer> getQuizNumbers() {
+    	Map<String, Integer> quizNumbers = new HashMap<>();
+    	try {
+    	    BufferedReader reader = new BufferedReader(new FileReader("languages.csv"));
+    	    reader.readLine();
+    	    String line = reader.readLine(); 
+    	    String prevFirstCol = "Spanish";
+    	    int total = 0;
+    	    while (line != null ) {
+    	        String[] values = line.split(";");
+    	        String firstCol = values[0];
+    	        int thirdCol = Integer.parseInt(values[2]);
+    	        //System.out.println(firstCol); 
+	            if (prevFirstCol.equals(firstCol)) {
+	                total += thirdCol;	                
+	            } 
+	            else {
+	            	//System.out.println("else içinde , prevFirst: " + prevFirstCol + "firstCol: " + firstCol);
+	            	quizNumbers.put(prevFirstCol, total);
+	            	total =thirdCol;
+	            	prevFirstCol = values[0];
+	            }
+	            line = reader.readLine();
+    	    }
+    	    quizNumbers.put(prevFirstCol, total);
+    	    reader.close();
+    	    //System.out.println("Total value: " + total);
+       	
+    	} catch (IOException e) {
+    	    e.printStackTrace();
+    	}
+	    return quizNumbers;
+    }
+    
 }

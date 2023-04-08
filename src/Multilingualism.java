@@ -26,17 +26,42 @@ public class Multilingualism {
         } else {
             System.out.println(fileName +" file already exists.");
         }
+        System.out.println("Spanish quiz number: " + fileIO.getQuizNumbers().keySet() +fileIO.getQuizNumbers().values() );
         
-        
-        
-        List<User> users = new ArrayList<>();
-        users.add(new User("Alice", "b",30, "Bronze", 51, 33, 500, "Spanish"));
-        users.add(new User("Bob", "b",33,"Bronze", 52, 17, 510, "Spanish"));
-        users.add(new User("Charlie", "b",30, "Bronze", 53, 20, 520, "Spanish"));
-        users.add(new User("David", "b",31, "Bronze", 54, 30, 540, "Spanish"));
-        users.add(new User("Efe", "b",32, "Bronze", 40, 16, 503, "Spanish"));
+        for(User user: userList) {
+        	Random rand = new Random();
+        	user.setQuizzesCompleted(rand.nextInt(6, fileIO.getQuizNumbers().get(user.getLanguageChoice())));
+        	System.out.println("user lang: " + user.getLanguageChoice());
+        	System.out.println("user quiz num: " + user.getQuizzesCompleted());
+        }
+        /*
+         *String input = "3 Listening Questions,3 Reading Questions,4 Speaking Questions,5 Word Matching Questions";
+        Map<String, Integer> map = new HashMap<>();
 
-        Comparator<User> byPointThenStreakThenUnit = Comparator.comparing(User::getPoint)
+        String[] parts = input.split(",");
+        for (String part : parts) {
+            String[] subparts = part.trim().split(" ");
+            int value = Integer.parseInt(subparts[0]);
+            String key = String.join(" ", Arrays.copyOfRange(subparts, 1, subparts.length));
+            map.put(key, value);
+        }
+
+        System.out.println("First element: "+map.get("Listening Questions"));
+
+         */
+        
+        //user random question cevaplıcak
+        //user ın puanı hesaplancak
+        //user ın uniti hesaplancak
+        //userları sıralıcaz
+        //userları league e yerleştircez
+        //Leagueları languagelardan çıkarmak lazım
+        //multilanguage a soru ekle
+        //interface yaz
+        //comment yaz
+        
+        
+        /*Comparator<User> byPointThenStreakThenUnit = Comparator.comparing(User::getPoint)
                                                         .reversed()
                                                         .thenComparing(User::getStreakNumber)
                                                         .reversed()
@@ -45,7 +70,7 @@ public class Multilingualism {
 
         for (User user : users) {
             //System.out.println(user.getUsername() + " Point: " + user.getPoint() + " StreakNum: " + user.getStreakNumber() + " CurrentUnit: " + user.getCurrentUnit());
-        }
+        }*/
     
     }	
 }
