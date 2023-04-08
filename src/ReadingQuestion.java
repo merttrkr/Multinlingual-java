@@ -12,5 +12,9 @@ public class ReadingQuestion extends Question{
 		readingContent[1] = new StringContent("English");
 		return readingContent;
 	}
-		
+	
+	@Override
+    public String toString() {
+        return "Reading Question";
+    }	
 }

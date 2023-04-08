@@ -15,4 +15,9 @@ public class WordMatchingQuestion extends Question {
 		wordMatchingContent[0] = content;
 		return wordMatchingContent;
 	}
+	
+	@Override
+    public String toString() {
+        return "Word Matching Question";
+    }
 }

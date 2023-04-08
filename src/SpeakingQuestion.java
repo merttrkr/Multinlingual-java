@@ -11,4 +11,9 @@ public class SpeakingQuestion extends Question {
 		speakingContent[1] = new AudioContent(languageName);
 		return speakingContent;
 	}
+	
+	@Override
+    public String toString() {
+        return "Speaking Question";
+    }
 }

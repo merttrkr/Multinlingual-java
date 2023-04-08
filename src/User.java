@@ -11,19 +11,15 @@ public class User {
     private String languageChoice;
 
     public User(String username, String password) {
-        this(username, password, 0, "", 0, 0);
+        this(username, password, 0, "", 0, 0, 0, "");
     }
     
-    // Constructor
-    public User(String username, String password, int currentUnit, String league, int quizzesCompleted, int point) {
+    public User(String username, String password, int currentUnit, String league, int quizzesCompleted,int StreakNumber, int point, String languageChoice) {
     	Random rand = new Random();
     	this.username = username;
         this.password = password;
-        this.currentUnit = currentUnit;
-        this.league = league;
-        this.quizzesCompleted = quizzesCompleted;
+        this.league = "Bronze";
         this.streakNumber = rand.nextInt(0, 365);
-        this.point = point;
         this.languageChoice = generateRandomUserLanguageChoice();
     }
     

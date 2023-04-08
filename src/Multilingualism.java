@@ -3,24 +3,31 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Random;
+import java.io.File;
 
 public class Multilingualism {
     public static void main(String[] args) {
     	String csvFile = "users.csv";
-    	FileIO csvReader = new FileIO();
+    	FileIO fileIO = new FileIO();
         List<User> userList = new ArrayList<>();
-        userList = csvReader.readUsersCSV(csvFile);
-        for (int i = 0; i < 100; i++) {
-        	  //System.out.println(userList.get(i));
+        userList = fileIO.readUsersCSV(csvFile);
+    	 	 
+        String fileName = "languages.csv"; // file name or path to check
+        File file = new File(fileName); // create a File object
+        
+        if (! file.exists()) {
+        	Language spanish = new Language(LanguageEnum.SPANISH.getName());
+        	Language german = new Language(LanguageEnum.GERMAN.getName());
+        	Language italian = new Language(LanguageEnum.ITALIAN.getName());
+        	Language turkish = new Language(LanguageEnum.TURKISH.getName()); 
+       
+        	Language[] languagesArray = {spanish, german, italian, turkish};
+        	fileIO.createLanguagesCSV(languagesArray);
+        } else {
+            System.out.println(fileName +" file already exists.");
         }
-    	 	    	
-    	Language spanish = new Language(LanguageEnum.SPANISH.getName());
-    	Language german = new Language(LanguageEnum.GERMAN.getName());
-    	Language italian = new Language(LanguageEnum.ITALIAN.getName());
-    	Language turkish = new Language(LanguageEnum.TURKISH.getName());   	        
-    	
-
-        //System.out.println( "Random language: "  + ", value: " +  languages[randomIndex].getValue());
+        
+        
         
         List<User> users = new ArrayList<>();
         users.add(new User("Alice", "b",30, "Bronze", 51, 33, 500, "Spanish"));
@@ -42,8 +49,3 @@ public class Multilingualism {
     
     }	
 }
-/*Unit[] units =  spanish.getUnitsArray();
-for (int i = 0; i <spanish.getUnitNumber(); i++) {
-	  System.out.println(i + ": " +  units[i].getQuizArray()[0].getQuestionsArray()[3].getLanguageName());
-	}
-System.out.println("point " + units[5].getQuizArray()[0].getQuestionsArray()[3].getPoint());*/

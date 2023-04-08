@@ -4,12 +4,20 @@ public class Quiz {
 	private Question[] questionsArray;
 	private int questionNumber;
 	private String languageName;
+	private int readingQuestionNumber;
+	private int listeningQuestionNumber;
+	private int wordMatchingQuestionNumber;
+	private int speakingQuestionNumber;
 	
 	public Quiz(String languageName) {// attributes randomly generated in this class.
 		Random rand = new Random();
 		questionNumber= rand.nextInt(8) + 8; // generates a random number between 60 and 100
 		questionsArray = new Question[questionNumber];
 		this.languageName = languageName;
+		readingQuestionNumber = 0;
+		listeningQuestionNumber = 0;
+		wordMatchingQuestionNumber = 0;
+		speakingQuestionNumber = 0;
 		createQuestions();
     }
 	
@@ -25,6 +33,25 @@ public class Quiz {
 	public void setQuestionsArray(Question[] questionsArray) {
 		this.questionsArray = questionsArray;
 	}
+	public int getQuestionNumber() {
+		return questionNumber;
+	}
+	public int getReadingQuestionNumber() {
+		return readingQuestionNumber;
+	}
+
+	public int getListeningQuestionNumber() {
+		return listeningQuestionNumber;
+	}
+
+	public int getSpeakingQuestionNumber() {
+		return speakingQuestionNumber;
+	}
+
+	public int getWordMatchingQuestionNumber() {
+		return wordMatchingQuestionNumber;
+	}
+	
 	
 	public void createQuestions() {
 		Random rand = new Random();
@@ -34,32 +61,28 @@ public class Quiz {
         }
 
 	}
-	public Question generateRandomQuestion(int key) {
-		
+	public Question generateRandomQuestion(int key) {		
 		if (key == 0) {
 			ReadingQuestion question = new ReadingQuestion(languageName);
-			//String[] cont = (String[]) question.getContent();
-			///System.out.println("content str " + cont[0] );
+			readingQuestionNumber = readingQuestionNumber + 1;
 			return question;
 		} 
 		else if( key == 1) {
-			//System.out.println("q typ " + 1);
 			 ListeningQuestion question = new ListeningQuestion(languageName);
+			 listeningQuestionNumber = listeningQuestionNumber + 1;
 			 return question;
 		}
 		else if( key == 2) {
-			//System.out.println("q typ " + 2);
-			SpeakingQuestion question = new SpeakingQuestion(languageName);
+			 SpeakingQuestion question = new SpeakingQuestion(languageName);
+			 speakingQuestionNumber = speakingQuestionNumber + 1;
 			 return question;
 		}
 		else{
-			//System.out.println("q typ " + 3);
 			WordMatchingQuestion question = new WordMatchingQuestion(languageName);
-			 return question;
+			wordMatchingQuestionNumber = wordMatchingQuestionNumber + 1;
+			return question;
 		}
-
-
-			
+		
 	}
 
 }

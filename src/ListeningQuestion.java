@@ -10,5 +10,10 @@ public class ListeningQuestion extends Question{
 		listeningContent[0] = new StringContent(languageName);
 		listeningContent[1] = new AudioContent(languageName);
 		return listeningContent;
-	}		
+	}	
+	
+	@Override
+    public String toString() {
+        return "Listening Question";
+    }
 }
