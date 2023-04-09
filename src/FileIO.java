@@ -87,6 +87,33 @@ public class FileIO {
 	    return quizNumbers;
     }
     
+    public Map<String, Integer> getUnitNumbers() {
+        Map<String, Integer> quizNumbers = new HashMap<>();
+        try {
+            BufferedReader reader = new BufferedReader(new FileReader("languages.csv"));
+            reader.readLine();
+            String line = reader.readLine(); 
+            String prevFirstCol = "Spanish";
+            while (line != null ) {
+                String[] values = line.split(";");
+                String languageName = values[0];
+                int numberOfUnits = Integer.parseInt(values[1]);
+
+                if (prevFirstCol.equals(languageName)) {
+                    quizNumbers.put(prevFirstCol, numberOfUnits);
+                } 
+                else {
+
+                    prevFirstCol = values[0];
+                }
+                line = reader.readLine();
+            }
+            reader.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return quizNumbers;
+    }
     public void getQuizzesArray(User user){
     	try {
     	    BufferedReader reader = new BufferedReader(new FileReader("languages.csv"));
