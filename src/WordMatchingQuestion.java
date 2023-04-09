@@ -3,7 +3,7 @@ import java.util.Map;
 
 public class WordMatchingQuestion extends Question {
 	public WordMatchingQuestion(String languageName) {
-		super(8, createWordMatchingContent(languageName), languageName);
+		super(5, createWordMatchingContent(languageName), languageName);
 	}
 	
 	public static Object[] createWordMatchingContent(String languageName) {
