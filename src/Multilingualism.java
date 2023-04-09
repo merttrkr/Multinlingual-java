@@ -5,9 +5,10 @@ public class Multilingualism {
     public static void main(String[] args) {
     	String csvFile = "users.csv";
     	FileIO fileIO = new FileIO();
-        List<User> userList = new ArrayList<>();
+        ArrayList<User> userList = new ArrayList<>();
         userList = fileIO.readUsersCSV(csvFile);
-    	 	 
+
+        
         String fileName = "languages.csv"; // file name or path to check
         File file = new File(fileName); // create a File object
         
@@ -16,7 +17,7 @@ public class Multilingualism {
         	Language german = new Language(LanguageEnum.GERMAN.getName());
         	Language italian = new Language(LanguageEnum.ITALIAN.getName());
         	Language turkish = new Language(LanguageEnum.TURKISH.getName()); 
-       
+        	
         	Language[] languagesArray = {spanish, german, italian, turkish};
         	fileIO.createLanguagesCSV(languagesArray);
         } else {
@@ -24,16 +25,14 @@ public class Multilingualism {
         }
         System.out.println("Spanish quiz number: " + fileIO.getQuizNumbers().keySet() +fileIO.getQuizNumbers().values() );
         
-    	Random rand = new Random();
-    	userList.get(0).setQuizzesCompleted(rand.nextInt(6, fileIO.getQuizNumbers().get(userList.get(0).getLanguageChoice())));
-    	System.out.println("user lang: " + userList.get(0).getLanguageChoice());
-    	//System.out.println("user quiz num: " + userList.get(0).getQuizzesCompleted()); 
-        fileIO.getQuizzesArray(userList.get(0));
-        /*for(User user: userList) {
 
-        }*/
+        for(User user: userList) {
+        	
+        	Random rand = new Random();
+        	user.setQuizzesCompleted(rand.nextInt(6, fileIO.getQuizNumbers().get(userList.get(0).getLanguageChoice())));
+        	fileIO.getQuizzesArray(user);
+        }
 
-        
         //user random question cevaplıcak
         //user ın puanı hesaplancak
         //user ın uniti hesaplancak
@@ -45,31 +44,63 @@ public class Multilingualism {
         //comment yaz
         
         
-        /*Comparator<User> byPointThenStreakThenUnit = Comparator.comparing(User::getPoint)
-                                                        .reversed()
-                                                        .thenComparing(User::getStreakNumber)
-                                                        .reversed()
-                                                        .thenComparing(User::getCurrentUnit);
-        Collections.sort(users, byPointThenStreakThenUnit);
-
-        for (User user : users) {
-            //System.out.println(user.getUsername() + " Point: " + user.getPoint() + " StreakNum: " + user.getStreakNumber() + " CurrentUnit: " + user.getCurrentUnit());
-        }*/
         
-        /*
-         *String input = "3 Listening Questions,3 Reading Questions,4 Speaking Questions,5 Word Matching Questions";
-        Map<String, Integer> map = new HashMap<>();
+        Comparator<User> byPointThenStreakThenUnit = Comparator.comparing(User::getPoint)
+                                                        .thenComparing(User::getStreakNumber)
+                                                        .reversed();
+        Collections.sort(userList, byPointThenStreakThenUnit);
+        
+        User[] userArray = userList.toArray(new User[userList.size()]); 
 
-        String[] parts = input.split(",");
-        for (String part : parts) {
-            String[] subparts = part.trim().split(" ");
-            int value = Integer.parseInt(subparts[0]);
-            String key = String.join(" ", Arrays.copyOfRange(subparts, 1, subparts.length));
-            map.put(key, value);
+        for (User user : userArray) {
+            System.out.println(user.getUsername() + " Point: " + user.getPoint() + " StreakNum: " + user.getStreakNumber() + " CurrentUnit: " + user.getCurrentUnit() + " Quizzes Completed: " +user.getQuizzesCompleted());
+        }
+        
+        BronzeLeague bronzeLeagueSpanish = new BronzeLeague(LanguageEnum.SPANISH.getName());
+        SilverLeague silverLeagueSpanish = new SilverLeague(LanguageEnum.SPANISH.getName());
+        GoldenLeague goldenLeagueSpanish = new GoldenLeague(LanguageEnum.SPANISH.getName());
+        SaphireLeague saphireLeagueSpanish = new SaphireLeague(LanguageEnum.SPANISH.getName());
+        RubyLeague rubyLeagueSpanish = new RubyLeague(LanguageEnum.SPANISH.getName());
+        
+        BronzeLeague bronzeLeagueGerman = new BronzeLeague(LanguageEnum.GERMAN.getName());
+        SilverLeague silverLeagueGerman = new SilverLeague(LanguageEnum.GERMAN.getName());
+        GoldenLeague goldenLeagueGerman = new GoldenLeague(LanguageEnum.GERMAN.getName());
+        SaphireLeague saphireLeagueGerman = new SaphireLeague(LanguageEnum.GERMAN.getName());
+        RubyLeague rubyLeagueGerman = new RubyLeague(LanguageEnum.GERMAN.getName());
+        
+        BronzeLeague bronzeLeagueItalian = new BronzeLeague(LanguageEnum.ITALIAN.getName());
+        SilverLeague silverLeagueItalian = new SilverLeague(LanguageEnum.ITALIAN.getName());
+        GoldenLeague goldenLeagueItalian = new GoldenLeague(LanguageEnum.ITALIAN.getName());
+        SaphireLeague saphireLeagueItalian = new SaphireLeague(LanguageEnum.ITALIAN.getName());
+        RubyLeague rubyLeagueItalian = new RubyLeague(LanguageEnum.ITALIAN.getName());
+        
+        BronzeLeague bronzeLeagueTurkish = new BronzeLeague(LanguageEnum.TURKISH.getName());
+        SilverLeague silverLeagueTurkish = new SilverLeague(LanguageEnum.TURKISH.getName());
+        GoldenLeague goldenLeagueTurkish = new GoldenLeague(LanguageEnum.TURKISH.getName());
+        SaphireLeague saphireLeagueTurkish = new SaphireLeague(LanguageEnum.TURKISH.getName());
+        RubyLeague rubyLeagueTurkish = new RubyLeague(LanguageEnum.TURKISH.getName());
+        
+        bronzeLeagueSpanish.setLeaderBoard(userList);
+        
+        ArrayList<User> promotedToSilver = bronzeLeagueSpanish.promoteToSilver();
+        silverLeagueSpanish.setLeaderBoard(promotedToSilver);
+        
+        ArrayList<User> promotedToGolden = silverLeagueSpanish.promoteToGolden();
+        goldenLeagueSpanish.setLeaderBoard(promotedToGolden);
+        
+        ArrayList<User> promotedToSaphire = goldenLeagueSpanish.promoteToSaphire();
+        saphireLeagueSpanish.setLeaderBoard(promotedToSaphire);
+        
+        ArrayList<User> promotedToRuby = saphireLeagueSpanish.promoteToSaphire();
+        rubyLeagueSpanish.setLeaderBoard(promotedToRuby);
+        
+        for(User user : saphireLeagueSpanish.getLeaderBoard()) {
+        	System.out.println("Saphire: "+ user.getUsername());
+        }
+              
+        for(User user : rubyLeagueSpanish.getLeaderBoard()) {
+        	System.out.println("Ruby: "+ user.getUsername());
         }
 
-        System.out.println("First element: "+map.get("Listening Questions"));
-
-         */
     }	
 }

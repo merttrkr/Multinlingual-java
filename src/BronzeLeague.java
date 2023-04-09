@@ -1,14 +1,30 @@
+import java.util.*;
 
 public class BronzeLeague extends League{
-	public BronzeLeague() {
-		super(0);
+	private int minRank;
+	
+	public BronzeLeague(String language) {
+		super(language);
+		this.minRank = 15;
 	}
 	
-	public boolean isSilver(int rank) {
-		if (rank > this.getMinRank()) {
-			return false;
-		}
-		return true;
+	public int getMinRank() {
+		return minRank;
 	}
+	
+	public ArrayList<User> promoteToSilver() {
+		ArrayList<User> promotedUsers = new ArrayList<User>();
+
+		for(int i = 0 ; i < minRank ; i ++) {
+			promotedUsers.add(i, this.getLeaderBoard().get(i));
+			
+		}
+		
+		
+		ArrayList<User> newLeaderBoard = new ArrayList<User>(promotedUsers.subList(0, minRank));
+		this.setLeaderBoard(newLeaderBoard);
+		return promotedUsers;
+	}
+	
 }
 

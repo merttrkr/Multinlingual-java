@@ -1,4 +1,5 @@
 import java.util.HashMap;
+import java.util.Random;
 import java.util.Map;
 
 public class WordMatchingQuestion extends Question {
@@ -7,13 +8,18 @@ public class WordMatchingQuestion extends Question {
 	}
 	
 	public static Object[] createWordMatchingContent(String languageName) {
-		Object[] wordMatchingContent = new Object[1];
-		StringContent englishWord = new StringContent("English");
-		StringContent translatedWord = new StringContent(languageName);
-		Map<StringContent, StringContent> content = new HashMap<>();
-		content.put(englishWord, translatedWord);
-		wordMatchingContent[0] = content;
-		return wordMatchingContent;
+		Random rand = new Random();
+		int numberOfWords = rand.nextInt(4, 9);
+		Object[] wordMatchingContent = new Object[numberOfWords];
+	    Map<StringContent, StringContent> content = new HashMap<>();
+	    for (int i = 0; i < numberOfWords; i++) {
+	    	StringContent englishWord = new StringContent("English");
+	     	StringContent translatedWord = new StringContent(languageName);
+	     	content.put(englishWord, translatedWord);
+	     	wordMatchingContent[i] = content;
+	    }
+
+	    return wordMatchingContent;
 	}
 	
 	@Override

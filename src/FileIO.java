@@ -5,11 +5,11 @@ import java.io.IOException;
 import java.util.*; 
 
 public class FileIO {
-    public List<User> readUsersCSV(String fileName) {
+    public ArrayList<User> readUsersCSV(String fileName) {
         String csvFile = fileName;
         String line = "";
         String csvSplitBy = ";";
-        List<User> userList = new ArrayList<>();
+        ArrayList<User> userList = new ArrayList<>();
         try (BufferedReader br = new BufferedReader(new FileReader(csvFile))) {
             while ((line = br.readLine()) != null) {
                 String[] userData = line.split(csvSplitBy);
@@ -93,35 +93,20 @@ public class FileIO {
     	    reader.readLine();
     	    String line = reader.readLine(); 
     	    String userLanguage = user.getLanguageChoice();
-    	    //int currentTotalQuizzesCompleted = ;
     	    int quizzesToBeSolved = user.getQuizzesCompleted();
-    	    System.out.println("user quiz num: " + quizzesToBeSolved);
-    	    /*user 17
-    	    user > unitenin quiz sayısı
-    	    	tüm ünite
-    	    	user-8= 9
-	    	hayır:
-	    		1>0
-	    		user- 
-	    		uniteden bi quiz seçer 
-	    		0larız
-	    		*/  
+    	    
     	    int unitCounter = 0;
     	    int totalPoint = 0;
     	    while (line != null && (quizzesToBeSolved != 0 ) ) {
     	        String[] values = line.split(";");
     	        if (values[0].equals(userLanguage)) {
-    	        	//System.out.println("current line lang: " + values[0] + values[2]);
     	        	
     	        	int currentUnitQuizNum = Integer.parseInt(values[2]);
     	        	if ((quizzesToBeSolved > currentUnitQuizNum) ){
     	        		unitCounter ++;
-    	        		//System.out.println("satırdaki quiz num: " + values[2] );
-    	        		//System.out.println("quizzesToBeSolved: " + quizzesToBeSolved );
     	        		
     	        		for (int i = 3; i < values.length ; i++) {
     	    	        	String currentQuizLine = values[i];
-    	    	        	//System.out.println("curr quiz line: "+ currentQuizLine);
     	    	        	UserQuestionOperations userQuestionOperations = new UserQuestionOperations();
     	    	        	totalPoint += userQuestionOperations.calculateQuizPoint(currentQuizLine);
     	    	        	
@@ -131,29 +116,23 @@ public class FileIO {
     	        	}
     	        	else {
     	        		unitCounter ++;
-    	        		//System.out.println("satırdaki quiz num ELSE: " + values[2] );
-    	        		//System.out.println("quizzesToBeSolved ELSE: " + quizzesToBeSolved );
+    	        		
     	        		int quizNumberForLastUnitRange = 3 + quizzesToBeSolved;
     	        		for (int i = 3; i < quizNumberForLastUnitRange ; i++) {
     	    	        	String currentQuizLine = values[i];
-    	    	        	//System.out.println("curr quiz line: "+ currentQuizLine);
     	    	        	UserQuestionOperations userQuestionOperations = new UserQuestionOperations();
     	    	        	totalPoint += userQuestionOperations.calculateQuizPoint(currentQuizLine);
-    	    	        	user.setPoint(totalPoint);
+
     	    	        	quizzesToBeSolved --;
-        	        		//System.out.println("quizzesToBeSolved ELSE FORDA: " + quizzesToBeSolved );
-        	        		//System.out.println();
+
     	    	        }
-    	        		
-    	        	System.out.println("Unit Number : " + unitCounter);	
-    	        	user.setCurrentUnit(unitCounter);
-    	        	user.setPoint(totalPoint);
-    	        	System.out.println("total Point: " + totalPoint);
     	        	}
     	        }
     	        line = reader.readLine();
 
     	    }
+        	user.setCurrentUnit(unitCounter);
+        	user.setPoint(totalPoint);
     	    reader.close();
        	
     	} catch (IOException e) {

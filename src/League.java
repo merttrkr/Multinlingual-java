@@ -1,22 +1,24 @@
+import java.util.*;
+
 
 public abstract class League {
-	private int minRank;
-	private User[] leaderBoard;
+	private String language;
+	private ArrayList<User> leaderBoard;
 	
-	public League(int minRank) {
-		this.minRank = minRank;
+	public League(String language) {
+		this.language = language;
 	}
 
-	public int getMinRank() {
-		return minRank;
-	}
-
-	public User[] getLeaderBoard() {
+	public ArrayList<User> getLeaderBoard() {
 		return leaderBoard;
 	}
 
-	public void setLeaderBoard(User[] leaderBoard) {
+	public void setLeaderBoard(ArrayList<User> leaderBoard) {
 		this.leaderBoard = leaderBoard;
+	}
+
+	public String getLanguage() {
+		return language;
 	}
 
 	

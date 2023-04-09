@@ -36,4 +36,6 @@ public class UserQuestionOperations {
 		return quizPoint;
 		
 	}
+	
+
 }
