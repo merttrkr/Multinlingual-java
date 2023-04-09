@@ -1,9 +1,5 @@
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Random;
 import java.io.File;
+import java.util.*; 
 
 public class Multilingualism {
     public static void main(String[] args) {
@@ -28,27 +24,15 @@ public class Multilingualism {
         }
         System.out.println("Spanish quiz number: " + fileIO.getQuizNumbers().keySet() +fileIO.getQuizNumbers().values() );
         
-        for(User user: userList) {
-        	Random rand = new Random();
-        	user.setQuizzesCompleted(rand.nextInt(6, fileIO.getQuizNumbers().get(user.getLanguageChoice())));
-        	System.out.println("user lang: " + user.getLanguageChoice());
-        	System.out.println("user quiz num: " + user.getQuizzesCompleted());
-        }
-        /*
-         *String input = "3 Listening Questions,3 Reading Questions,4 Speaking Questions,5 Word Matching Questions";
-        Map<String, Integer> map = new HashMap<>();
+    	Random rand = new Random();
+    	userList.get(0).setQuizzesCompleted(rand.nextInt(6, fileIO.getQuizNumbers().get(userList.get(0).getLanguageChoice())));
+    	System.out.println("user lang: " + userList.get(0).getLanguageChoice());
+    	//System.out.println("user quiz num: " + userList.get(0).getQuizzesCompleted()); 
+        fileIO.getQuizzesArray(userList.get(0));
+        /*for(User user: userList) {
 
-        String[] parts = input.split(",");
-        for (String part : parts) {
-            String[] subparts = part.trim().split(" ");
-            int value = Integer.parseInt(subparts[0]);
-            String key = String.join(" ", Arrays.copyOfRange(subparts, 1, subparts.length));
-            map.put(key, value);
-        }
+        }*/
 
-        System.out.println("First element: "+map.get("Listening Questions"));
-
-         */
         
         //user random question cevaplıcak
         //user ın puanı hesaplancak
@@ -71,6 +55,21 @@ public class Multilingualism {
         for (User user : users) {
             //System.out.println(user.getUsername() + " Point: " + user.getPoint() + " StreakNum: " + user.getStreakNumber() + " CurrentUnit: " + user.getCurrentUnit());
         }*/
-    
+        
+        /*
+         *String input = "3 Listening Questions,3 Reading Questions,4 Speaking Questions,5 Word Matching Questions";
+        Map<String, Integer> map = new HashMap<>();
+
+        String[] parts = input.split(",");
+        for (String part : parts) {
+            String[] subparts = part.trim().split(" ");
+            int value = Integer.parseInt(subparts[0]);
+            String key = String.join(" ", Arrays.copyOfRange(subparts, 1, subparts.length));
+            map.put(key, value);
+        }
+
+        System.out.println("First element: "+map.get("Listening Questions"));
+
+         */
     }	
 }

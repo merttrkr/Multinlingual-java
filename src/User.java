@@ -34,6 +34,10 @@ public class User {
 	public int getCurrentUnit() {
 		return currentUnit;
 	}
+	
+	public void setCurrentUnit(int currentUnit) {
+		this.currentUnit = currentUnit;
+	}
 
 	public String getLeague() {
 		return league;

@@ -88,4 +88,80 @@ public class FileIO {
 	    return quizNumbers;
     }
     
+    public void getQuizzesArray(User user){
+    	try {
+    	    BufferedReader reader = new BufferedReader(new FileReader("languages.csv"));
+    	    reader.readLine();
+    	    String line = reader.readLine(); 
+    	    String userLanguage = user.getLanguageChoice();
+    	    //int currentTotalQuizzesCompleted = ;
+    	    int quizzesToBeSolved = user.getQuizzesCompleted();
+    	    System.out.println("user quiz num: " + quizzesToBeSolved);
+    	    /*user 17
+    	    user > unitenin quiz sayısı
+    	    	tüm ünite
+    	    	user-8= 9
+	    	hayır:
+	    		1>0
+	    		user- 
+	    		uniteden bi quiz seçer 
+	    		0larız
+	    		*/  
+    	    int unitCounter = 0;
+    	    while (line != null && (quizzesToBeSolved != 0 ) ) {
+    	        String[] values = line.split(";");
+    	        if (values[0].equals(userLanguage)) {
+    	        	//System.out.println("current line lang: " + values[0] + values[2]);
+    	        	
+    	        	int currentUnitQuizNum = Integer.parseInt(values[2]);
+    	        	if ((quizzesToBeSolved > currentUnitQuizNum) ){
+    	        		unitCounter ++;
+    	        		System.out.println("satırdaki quiz num: " + values[2] );
+    	        		System.out.println("quizzesToBeSolved: " + quizzesToBeSolved );
+    	        		
+    	        		for (int i = 3; i < values.length ; i++) {
+    	    	        	String currentQuizLine = values[i];
+    	    	        	System.out.println("curr quiz line: "+ currentQuizLine);
+    	    	        	UserQuestionOperations userQuestionOperations = new UserQuestionOperations();
+    	    	        	userQuestionOperations.answerQuestion(currentQuizLine);
+    	    	        	quizzesToBeSolved -- ;
+    	    	        }
+
+
+    	        	}
+    	        	else {
+    	        		unitCounter ++;
+    	        		System.out.println("satırdaki quiz num ELSE: " + values[2] );
+    	        		System.out.println("quizzesToBeSolved ELSE: " + quizzesToBeSolved );
+    	        		int quizNumberForLastUnitRange = 3 + quizzesToBeSolved;
+    	        		for (int i = 3; i < quizNumberForLastUnitRange ; i++) {
+    	    	        	String currentQuizLine = values[i];
+    	    	        	System.out.println("curr quiz line: "+ currentQuizLine);
+    	    	        	UserQuestionOperations userQuestionOperations = new UserQuestionOperations();
+    	    	        	userQuestionOperations.answerQuestion(currentQuizLine);
+    	    	        	quizzesToBeSolved --;
+        	        		System.out.println("quizzesToBeSolved ELSE FORDA: " + quizzesToBeSolved );
+        	        		System.out.println();
+    	    	        }
+    	        		
+    	        	System.out.println("Unit Number : " + unitCounter);	
+    	        	user.setCurrentUnit(unitCounter);
+    	        	}
+    	        }
+    	        line = reader.readLine();
+
+    	        
+    	        
+    	        
+    	       
+
+    	    }
+    	    reader.close();
+       	
+    	} catch (IOException e) {
+    	    e.printStackTrace();
+    	}
+
+    }
+    
 }
