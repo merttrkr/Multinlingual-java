@@ -1,16 +1,13 @@
 import java.util.Random;
 
-public class StringContent{
+public class StringContent extends ContentType{
 	private String text;
-	private String languageName;
+
 	
 	public StringContent(String languageName) {
+		super(languageName);
 		this.text = randomStringGenerator();
-		this.languageName = languageName;
-	}
-
-	public String getLanguageName() {
-		return languageName;
+		
 	}
 
 	public String getText() {
@@ -20,8 +17,6 @@ public class StringContent{
 	public void setText(String text) {
 		this.text = text;
 	}
-
-
 	
 	public static String randomStringGenerator() {
 		Random rand = new Random();

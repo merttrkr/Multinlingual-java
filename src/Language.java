@@ -7,7 +7,7 @@ public class Language {
 	public Language(String name ) {// only name needed when generating this class.
     	this.name = name;
     	Random rand = new Random();
-    	unitNumber = rand.nextInt(41) + 60; // generates a random number between 60 and 100
+    	unitNumber = rand.nextInt(60, 101); // generates a random number between 60 and 100
     	unitsArray = new Unit[unitNumber];
     	createUnits();      
     }

@@ -11,7 +11,7 @@ public class Quiz {
 	
 	public Quiz(String languageName) {// attributes randomly generated in this class.
 		Random rand = new Random();
-		questionNumber= rand.nextInt(8) + 8; // generates a random number between 60 and 100
+		questionNumber= rand.nextInt(8, 16); // generates a random number between 60 and 100
 		questionsArray = new Question[questionNumber];
 		this.languageName = languageName;
 		readingQuestionNumber = 0;

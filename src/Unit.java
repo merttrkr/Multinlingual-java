@@ -6,9 +6,9 @@ public class Unit {
 	private String languageName;
 	
 
-    public Unit(String languageName ) {// attributes randomly generated in this class.
+    public Unit(String languageName ) {
        Random rand = new Random();
-       quizNumber = rand.nextInt(10) + 1;
+       quizNumber = rand.nextInt(1, 11);
        quizArray = new Quiz[quizNumber];
        this.languageName = languageName;
        createQuizzes();

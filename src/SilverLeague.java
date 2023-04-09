@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 
-public class SilverLeague extends League {
+public class SilverLeague extends League implements ILeague {
 	private int minRank;
 	
 	public SilverLeague(String language) {
@@ -13,14 +13,14 @@ public class SilverLeague extends League {
 		return minRank;
 	}
 	
-	public ArrayList<User> promoteToGolden() {
+	public ArrayList<User> promoteToNextLeague() {
 		ArrayList<User> promotedUsers = new ArrayList<User>();
 
 		for(int i = 0 ; i < minRank ; i ++) {
 			promotedUsers.add(i, this.getLeaderBoard().get(i));
 		}
 		
-		ArrayList<User> newLeaderBoard = new ArrayList<User>(promotedUsers.subList(0, minRank));
+		ArrayList<User> newLeaderBoard = new ArrayList<User>(this.getLeaderBoard().subList(promotedUsers.size(), this.getLeaderBoard().size()));
 		this.setLeaderBoard(newLeaderBoard);
 		return promotedUsers;
 	}

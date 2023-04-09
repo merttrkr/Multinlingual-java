@@ -4,21 +4,19 @@ public class User {
 	private String username;
     private String password;
     private int currentUnit;
-    private String league;
     private int quizzesCompleted;
     private int streakNumber;
     private int point;
     private String languageChoice;
 
     public User(String username, String password) {
-        this(username, password, 0, "", 0, 0, 0, "");
+        this(username, password, 0, 0, 0, 0, "");
     }
     
-    public User(String username, String password, int currentUnit, String league, int quizzesCompleted,int StreakNumber, int point, String languageChoice) {
+    public User(String username, String password, int currentUnit,  int quizzesCompleted,int StreakNumber, int point, String languageChoice) {
     	Random rand = new Random();
     	this.username = username;
         this.password = password;
-        this.league = "Bronze";
         this.streakNumber = rand.nextInt(0, 365);
         this.languageChoice = generateRandomUserLanguageChoice();
     }
@@ -37,14 +35,6 @@ public class User {
 	
 	public void setCurrentUnit(int currentUnit) {
 		this.currentUnit = currentUnit;
-	}
-
-	public String getLeague() {
-		return league;
-	}
-
-	public void setLeague(String league) {
-		this.league = league;
 	}
 
 	public int getQuizzesCompleted() {

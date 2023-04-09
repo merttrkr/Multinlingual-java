@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 
-public class SaphireLeague extends League{
+public class SaphireLeague extends League implements ILeague{
 	private int minStreakNumber;
 	private int minUnitNumber;
 	private int minPoint;
@@ -24,7 +24,7 @@ public class SaphireLeague extends League{
 		return minPoint;
 	}
 	
-	public ArrayList<User> promoteToSaphire() {
+	public ArrayList<User> promoteToNextLeague() {
 		ArrayList<User> promotedUsers = new ArrayList<User>();		
 		int count = 0;
 	
@@ -36,7 +36,7 @@ public class SaphireLeague extends League{
 			}
 		}
 		
-		ArrayList<User> newLeaderBoard = new ArrayList<User>(promotedUsers.subList(0, promotedUsers.size()));
+		ArrayList<User> newLeaderBoard = new ArrayList<User>(this.getLeaderBoard().subList(promotedUsers.size(), this.getLeaderBoard().size()));
 		this.setLeaderBoard(newLeaderBoard);
 		return promotedUsers;
 	}

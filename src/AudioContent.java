@@ -1,21 +1,16 @@
 import java.util.Random;
 
-public class AudioContent {
+public class AudioContent extends ContentType {
 	private int audioLength;
-	private String languageName;
 	
 	public AudioContent( String languageName) {
+		super(languageName);
 		Random rand = new Random();
-		this.audioLength = rand.nextInt(300) + 1;
-		this.languageName = languageName;
-		
+		this.audioLength = rand.nextInt(300) + 1;	
 	}
 
 	public int getAudioLength() {
 		return audioLength;
 	}
 
-	public String getLanguageName() {
-		return languageName;
-	}
 }
